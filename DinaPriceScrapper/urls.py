@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render
-from scrapping import get_amazon_price
+from scrapping import get_amazon_price,get_rdc_price
 
 
 def home(request):
     if request.method == 'POST':
         search_product = request.POST.get('product')
-        products = get_amazon_price(search_product)
-        return render(request,'home.html',{'products':products})
+        amazon_products = get_amazon_price(search_product)
+        rdc_products = get_rdc_price(search_product)
+        return render(request,'home.html',{'amazon_products':amazon_products, 'rdc_products':rdc_products})
     else:
         return render(request,'home.html')
 

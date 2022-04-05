@@ -1,0 +1,10 @@
+<form method="POST">
+  {% csrf_token %}
+  <input
+    type="text"
+    name="product"
+    placeholder="Entrez le nom de votre produit"
+    size="30"
+  />
+  <input id="btn" type="submit" />
+</form>

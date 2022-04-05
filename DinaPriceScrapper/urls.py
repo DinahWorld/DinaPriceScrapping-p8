@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.shortcuts import render
+from scrapping import get_amazon_price
+
+
+def home(request):
+    if request.method == 'POST':
+        search_product = request.POST.get('product')
+        products = get_amazon_price(search_product)
+        return render(request,'home.html',{'products':products})
+    else:
+        return render(request,'home.html')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', home),
 ]

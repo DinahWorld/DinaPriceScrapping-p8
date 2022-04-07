@@ -4,139 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DinaPriceScrapper</title>
+    <title>DinaPriceScraper</title>
     <style>
-      .title {
-        font-size: 1.5em;
-        font-weight: bold;
-        text-align: center;
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+      .dinaScraper{
+        font-family: 'Montserrat', sans-serif;
       }
-      .dinaScrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .dinaScrapperMenu {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-weight: 200;
-      }
-      .dinaScrapperRDCLogo,
-      .dinaScrapperAmazonLogo {
-        background-color: #eee;
-        color: #444;
-        cursor: pointer;
-        padding: 18px;
-        width: 50%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
-      }
-      .dinaScrapperRDCLogo,
-      .dinaScrapperAmazonLogo {
-        background-color: #777;
-        color: white;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
-      }
-
-      .active,
-      .dinaScrapperRDCLogo:hover,
-      .dinaScrapperAmazonLogo:hover {
-        background-color: #555;
-      }
-      .dinaScrapperRDCLogo:after,
-      .dinaScrapperAmazonLogo:after {
-        content: "\002B";
-        color: white;
-        font-weight: bold;
-        float: right;
-        margin-left: 5px;
-      }
-
-      .active:after {
-        content: "\2212";
-      }
-      .dinaScrapperRDCProducts,
-      .dinaScrapperAmazonProducts {
-        padding: 0 18px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-        background-color: #f1f1f1;
-      }
+      {% include 'styles/menu.css' %}
+      {% include 'styles/products.css' %}
     </style>
   </head>
 
   <body>
-    <div class="title">
-      <h1>DinaPriceScrapper</h1>
-    </div>
-    <div class="dinaScrapper">
-      <div class="dinaScrapperMenu">
-        <h3>Votre Produit :</h3>
-        <div class="dinaScrapperInputProduct">{% include 'form.html' %}</div>
-      </div>
-      <div class="dinaScrapperWebsiteList">
+    <div class="dinaScraper">
+      {% include 'menu.html' %}
+      <div class="dinaScraperWebsiteList">
         <h3>Liste des sites :</h3>
-        <div class="dinaScrapperAmazon">
-          <button type="button" class="dinaScrapperAmazonLogo">Amazon</button>
-          <div class="dinaScrapperAmazonProducts">
-            <div>
-              {% for product in amazon_products %}
-              <div>
-                <p>
-                  <a href="{{product.url}}" target="_blank"
-                    >{{product.name}} -- {{product.price}}</a
-                  >
-                </p>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        <div class="dinaScrapperRDC">
-          <button type="button" class="dinaScrapperRDCLogo">
-            Rue Du Commerce
-          </button>
-          <div class="dinaScrapperRDCProducts">
-            <div>
-              {% for product in rdc_products %}
-              <div>
-                <p>
-                  <a href="{{product.url}}" target="_blank"
-                    >{{product.name}} -- {{product.price}}</a
-                  >
-                </p>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
+        {% include 'products.html' %}
       </div>
     </div>
     <script>
       let coll = [
-        document.getElementsByClassName("dinaScrapperAmazonLogo"),
-        document.getElementsByClassName("dinaScrapperRDCLogo"),
+        document.getElementsByClassName("dinaScraperAmazonCollapse"),
+        document.getElementsByClassName("dinaScraperDartyCollapse"),
+        document.getElementsByClassName("dinaScraperRDCCollapse"),
+        document.getElementsByClassName("dinaScraperFnacCollapse"),
+        document.getElementsByClassName("dinaScraperRakutenCollapse"),
       ];
-      let i;
-      let y;
-      for (i = 0; i < coll.length; i++) {
-        for (y = 0; y < coll[0].length; y++) {
+      let contents = [
+        document.getElementsByClassName("dinaScraperAmazonProducts"),
+        document.getElementsByClassName("dinaScraperDartyProducts"),
+        document.getElementsByClassName("dinaScraperRDCProducts"),
+        document.getElementsByClassName("dinaScraperFnacProducts"),
+        document.getElementsByClassName("dinaScraperRakutenProducts"),
+      ];
+
+      for (let i = 0; i < coll.length; i++) {
+        for (let y = 0; y < coll[0].length; y++) {
           coll[i][y].addEventListener("click", function () {
             this.classList.toggle("active");
-            let content = this.nextElementSibling;
+            let content = contents[i][y];
             if (content.style.maxHeight) {
               content.style.maxHeight = null;
             } else {

@@ -1,0 +1,136 @@
+.dinaScraperWebsiteList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.dinaScraper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.dinaScraperTab {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.dinaScraperRDCCollapse,
+.dinaScraperDartyCollapse,
+.dinaScraperFnacCollapse,
+.dinaScraperRakutenCollapse,
+.dinaScraperAmazonCollapse {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1em;
+  width: 70px;
+  height: 90px;
+  margin: 0 auto;
+  border: none;
+  border-top-left-radius: 35px;
+  border-bottom-left-radius: 35px;
+  background-color: #333c53;
+}
+
+.dinaScraperBestPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60vw;
+  height: 90px;
+  background-color: #0e182f;
+  color: white;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+.dinaScraperLogo {
+  display: flex;
+  align-self: center;
+  margin-left: 20px;
+}
+.dinaScraperBestLink {
+  margin-left: auto;
+  align-items: center;
+  margin-right: 20px;
+  width: 154px;
+  height: 62px;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #b8c0ff;
+  color: white;
+  border: none;
+}
+.dinaScraperBestLink a {
+  color: white;
+  text-decoration: none;
+}
+.active,
+.dinaScraperRDCCollapse:hover,
+.dinaScraperDartyCollapse:hover,
+.dinaScraperFnacCollapse:hover,
+.dinaScraperRakutenCollapse:hover,
+.dinaScraperAmazonCollapse:hover {
+  cursor: pointer;
+  background-color: #c8b6ff;
+}
+.dinaScraperBestLink:hover {
+  background-color: #c8b6ff;
+  cursor: pointer;
+}
+.dinaScraperRDCProducts,
+.dinaScraperDartyProducts,
+.dinaScraperFnacProducts,
+.dinaScraperRakutenProducts,
+.dinaScraperAmazonProducts {
+  display: flex;
+  flex-direction: column;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #192a53;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 50vw;
+}
+.dinaScraperRDCProducts a,
+.dinaScraperDartyProducts a,
+.dinaScraperFnacProducts a,
+.dinaScraperRakuenProducts a,
+.dinaScraperAmazonProducts a {
+  color: white;
+  font-weight: bold;
+}
+.dinaScraperRDCProducts a:hover,
+.dinaScraperDartyProducts a:hover,
+.dinaScraperFnacProducts a:hover,
+.dinaScraperRakuenProducts a:hover,
+.dinaScraperAmazonProducts a:hover {
+  color: #c8b6ff;
+}
+.dinaScraperBestProductPrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  width: 30vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dinaScraperBestProductPrice p {
+  font-weight: bold;
+  padding: 0.5rem;
+  font-size: 1.3em;
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+}

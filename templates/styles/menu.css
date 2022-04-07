@@ -1,0 +1,132 @@
+.dinaScraperTop {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-top: -10px;
+  margin-left: -10px;
+  width: 110vw;
+  height: 30vh;
+  padding: 0;
+  background-color: #0e182f;
+}
+.dinaScraperTop .dinaScraperMenu {
+  flex: 0 1 auto;
+}
+.dinaScraperMenu {
+  margin-top: 30px;
+  z-index: 1;
+}
+.dinaScraperMenu h1 {
+  font-size: 100px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+.dinaScraperInputProduct {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+.dinaScraperInputProduct #product {
+  padding: 10px;
+  font-size: 1em;
+  height: 40px;
+  border: none;
+  border-radius: 40px;
+}
+.dinaScraperInputProduct #btn {
+  font-size: 1em;
+  width: 50px;
+  height: 40px;
+  border: none;
+  border-radius: 40px;
+  margin-left: 10px;
+  background-color: #b8c0ff;
+}
+.dinaScraperInputProduct #btn:hover {
+  background-color: #c8b6ff;
+  cursor: pointer;
+}
+.dinaScraperInputProduct #product:focus {
+  box-shadow: none;
+  border-color: none;
+}
+.dinaScraperBar {
+  background-color: #b8c0ff;
+  width: 110vw;
+  margin-left: -10px;
+  height: 30px;
+  margin-top: -3px;
+  z-index: 3;
+}
+
+.dinaPlanet1 {
+  display: block;
+  position: absolute;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.dinaPlanet1 svg {
+  width: 55vw;
+}
+
+.dinaMeteor1 {
+  display: block;
+  position: absolute;
+  left: 30%;
+  top: 10%;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.dinaMeteor1 svg {
+  height: 25vh;
+  width: 5vw;
+}
+
+.dinaMeteor3 {
+  display: block;
+  position: absolute;
+  right: 0%;
+  top: -10%;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.dinaMeteor3 svg {
+  height: 25vh;
+  width: 20vw;
+}
+
+.dinaMeteor2 {
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.dinaMeteor2 svg {
+  height: 25vh;
+  width: 10vw;
+}
+.dinaStars {
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.dinaStars svg {
+  height: 25vh;
+  width: 110vw;
+}

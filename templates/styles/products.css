@@ -104,7 +104,7 @@
 .dinaScraperRDCProducts a,
 .dinaScraperDartyProducts a,
 .dinaScraperFnacProducts a,
-.dinaScraperRakuenProducts a,
+.dinaScraperRakutenProducts a,
 .dinaScraperAmazonProducts a {
   color: white;
   font-weight: bold;
@@ -112,7 +112,7 @@
 .dinaScraperRDCProducts a:hover,
 .dinaScraperDartyProducts a:hover,
 .dinaScraperFnacProducts a:hover,
-.dinaScraperRakuenProducts a:hover,
+.dinaScraperRakutenProducts a:hover,
 .dinaScraperAmazonProducts a:hover {
   color: #c8b6ff;
 }

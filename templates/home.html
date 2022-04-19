@@ -1,86 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DinaPriceScraper</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-      .dinaScraper{
-        font-family: 'Montserrat', sans-serif;
-      }
-      {% include 'styles/menu.css' %}
-      {% include 'styles/products.css' %}
-    </style>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DinaPriceScraper</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-  <body>
-    <div class="dinaScraper">
-      {% include 'menu.html' %}
-      <div class="dinaScraperWebsiteList">
-        <h3>Liste des sites :</h3>
-        {% include 'products.html' %}
-      </div>
+    .dinaScraper {
+      font-family: 'Montserrat', sans-serif;
+    }
+      {% include 'styles/menu.css'%}
+
+      {% include 'styles/products.css'%}
+  </style>
+</head>
+
+<body>
+  <div class="dinaScraper">
+    {% include 'menu.html' %}
+    <div class="dinaScraperWebsiteList">
+      <h3>Liste des sites :</h3>
+      {% include 'products.html' %}
     </div>
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </div>
 
-    <script>
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      let stat = [
-          ['Director (Year)',  'Rotten Tomatoes'],
-          ['Alfred Hitchcock (1935)', 8.4],
-          ['Ralph Thomas (1959)',     6.9],
-          ['Don Sharp (1978)',        6.5],
-          ['James Hawes (2008)',      4.42]
-        ]
-      function drawChart() {
-        let data = google.visualization.arrayToDataTable(stat);
+  <table>
+    <tr>
+      <th>
+        Nom du produit
+      </th>
+      <th>
+        Prix
+      </th>
+      <th>
+        Site
+      </th>
+      <th>
+        Date
+      </th>
+      <th>
+        Heure
+      </th>
+    </tr>
+    {% for product in saved_products %}
+    <tr>
+      <td>
+        {{product.0}}
+      </td>
+      <td>
+        {{product.1}}
+      </td>
+      <td>
+        <a href="{{product.2}}" target="_blank">Lien</a>
+      </td>
+      <td>
+        {{product.3}}
+      </td>
+      <td>
+        {{product.4}}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
 
-        let options = {
-          title: 'The decline of \'The 39 Steps\'',
-          vAxis: {title: 'Accumulated Rating'},
-          isStacked: true
-        };
+  <script type="text/javascript">
+    // Script pour avoir l'affichage des produits disponibles
+    let coll = [
+      document.getElementsByClassName("dinaScraperAmazonCollapse"),
+      document.getElementsByClassName("dinaScraperDartyCollapse"),
+      document.getElementsByClassName("dinaScraperRDCCollapse"),
+      document.getElementsByClassName("dinaScraperFnacCollapse"),
+      document.getElementsByClassName("dinaScraperRakutenCollapse"),
+    ];
+    let contents = [
+      document.getElementsByClassName("dinaScraperAmazonProducts"),
+      document.getElementsByClassName("dinaScraperDartyProducts"),
+      document.getElementsByClassName("dinaScraperRDCProducts"),
+      document.getElementsByClassName("dinaScraperFnacProducts"),
+      document.getElementsByClassName("dinaScraperRakutenProducts"),
+    ];
 
-        let chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
+    for (let i = 0; i < coll.length; i++) {
+      for (let y = 0; y < coll[0].length; y++) {
+        coll[i][y].addEventListener("click", function () {
+          this.classList.toggle("active");
+          let content = contents[i][y];
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
       }
-    </script>
-      
-    <script>
-      let coll = [
-        document.getElementsByClassName("dinaScraperAmazonCollapse"),
-        document.getElementsByClassName("dinaScraperDartyCollapse"),
-        document.getElementsByClassName("dinaScraperRDCCollapse"),
-        document.getElementsByClassName("dinaScraperFnacCollapse"),
-        document.getElementsByClassName("dinaScraperRakutenCollapse"),
-      ];
-      let contents = [
-        document.getElementsByClassName("dinaScraperAmazonProducts"),
-        document.getElementsByClassName("dinaScraperDartyProducts"),
-        document.getElementsByClassName("dinaScraperRDCProducts"),
-        document.getElementsByClassName("dinaScraperFnacProducts"),
-        document.getElementsByClassName("dinaScraperRakutenProducts"),
-      ];
-
-      for (let i = 0; i < coll.length; i++) {
-        for (let y = 0; y < coll[0].length; y++) {
-          coll[i][y].addEventListener("click", function () {
-            this.classList.toggle("active");
-            let content = contents[i][y];
-            if (content.style.maxHeight) {
-              content.style.maxHeight = null;
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-            }
-          });
-        }
-      }
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>

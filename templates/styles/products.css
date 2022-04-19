@@ -66,7 +66,7 @@
   border-radius: 20px;
   background-color: #b8c0ff;
   color: white;
-  border: none;
+  border: none
 }
 .dinaScraperBestLink a {
   color: white;
@@ -133,4 +133,36 @@
   margin: 0;
   padding: 0;
   margin-left: 20px;
+}
+
+.dinaHeart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  border-radius: 10%;
+  background-color: #b8c0ff;
+  font-size: 1.5em;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  margin : 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

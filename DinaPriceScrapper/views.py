@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render
 from scraping import get_products
-from save_product import save_product
+from save_product import save_product,get_saved_products
 
 # Va me permettre d'appeler directement par l'attribut dans le fichier html
 class objectview(object):
@@ -34,9 +34,12 @@ def search_products(request,search_product):
             "rakuten_best": objectview(rakuten_products[0]),
         },   
     )
-    
+
 def render_page(request):
-    return render(request, "home.html")
+    saved_products_name = get_saved_products()
+    return render(request, "home.html",{
+        "saved_products": saved_products_name[0],
+    })
 
 def home(request):
     if request.method == "POST":

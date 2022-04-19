@@ -1,110 +1,126 @@
 <form method="POST"> {% csrf_token %} <div class="dinaScraper">
-  <div class="dinaScraperTab">
-    <button type="button" class="dinaScraperAmazonCollapse">⬇</button>
-    <div class="dinaScraperBestPrice"> {% load static %} <img src="https://logos-marques.com/wp-content/uploads/2021/03/logo-Amazon.jpg" alt="Logo Amazon" class="dinaScraperLogo" height="60" />
-      <div class="dinaScraperBestProductPrice">
-        <p class="dinaScrapperProductTitle">{{amazon_best.name}}</p>
-        <p class="dinaScrapperProductPrice">{{amazon_best.price}}</p>
+    <div class="dinaScraperTab">
+      <button type="button" class="dinaScraperAmazonCollapse">⬇</button>
+      <div class="dinaScraperBestPrice"> {% load static %} <img
+          src="https://logos-marques.com/wp-content/uploads/2021/03/logo-Amazon.jpg" alt="Logo Amazon"
+          class="dinaScraperLogo" height="60" />
+        <div class="dinaScraperBestProductPrice">
+          <p class="dinaScrapperProductTitle">{{amazon_best.name}}</p>
+          <p class="dinaScrapperProductPrice">{{amazon_best.price}}</p>
+          <input type="checkbox" id="save" name="data"
+            value="{{amazon_best.name}}@{{amazon_best.price}}@{{amazon_best.url}}">
+        </div>
+        <button type="button" class="dinaScraperBestLink">
+          <a href="{{amazon_best.url}}">Voir l'offre</a>
+        </button>
       </div>
-      <button type="button" class="dinaScraperBestLink">
-        <a href="{{amazon_best.url}}">Voir l'offre</a>
-      </button>
+    </div>
+    <div class="dinaScraperAmazonProducts"> {% for product in amazon_products %} <div>
+        <p>
+          <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
+        </p>
+        <input type="checkbox" id="save" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
+      </div> {% endfor %} </div>
+  </div>
+  <div class="dinaScraper">
+    <div class="dinaScraperTab">
+      <button type="button" class="dinaScraperRDCCollapse">⬇</button>
+      <div class="dinaScraperBestPrice"> {% load static %} <img
+          src="https://upload.wikimedia.org/wikipedia/fr/thumb/e/eb/Logo_Rue_du_Commerce_2020.svg/1200px-Logo_Rue_du_Commerce_2020.svg.png"
+          alt="Logo Rue du Commerce" class="dinaScraperLogo" height="60" />
+        <div class="dinaScraperBestProductPrice">
+          <p class="dinaScrapperProductTitle">{{rdc_best.name}}</p>
+          <p class="dinaScrapperProductPrice">{{rdc_best.price}}</p>
+          <input type="checkbox" id="save" name="data" value="{{rdc_best.name}}@{{rdc_best.price}}@{{rdc_best.url}}">
+        </div>
+        <button type="button" class="dinaScraperBestLink">
+          <a href="{{rdc_best.url}}">Voir l'offre</a>
+        </button>
+      </div>
+    </div>
+    <div class="dinaScraperRDCProducts"> {% for product in rdc_products %} <div>
+        <p>
+          <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
+        </p>
+        <input type="checkbox" id="save" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
+
+      </div> {% endfor %} </div>
+  </div>
+  <div class="dinaScraper">
+    <div class="dinaScraperTab">
+      <button type="button" class="dinaScraperDartyCollapse">⬇</button>
+      <div class="dinaScraperBestPrice"> {% load static %} <img
+          src="https://blog.mappy.com/wp-content/uploads/2021/11/Darty-logo.png" alt="Logo Darty"
+          class="dinaScraperLogo" height="60" />
+        <div class="dinaScraperBestProductPrice">
+          <p class="dinaScrapperProductTitle">{{darty_best.name}}</p>
+          <p class="dinaScrapperProductPrice">{{darty_best.price}}</p>
+          <input type="checkbox" id="save" name="data"
+            value="{{darty_best.name}}@{{darty_best.price}}@{{darty_best.url}}">
+        </div>
+        <button type="button" class="dinaScraperBestLink">
+          <a href="{{darty_best.url}}">Voir l'offre</a>
+        </button>
+      </div>
+    </div>
+    <div class="dinaScraperDartyProducts"> {% for product in darty_products %} <div>
+        <p>
+          <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
+        </p>
+        <input type="checkbox" id="save" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
+
+      </div> {% endfor %} </div>
+  </div>
+  <div class="dinaScraper">
+    <div class="dinaScraperTab">
+      <button type="button" class="dinaScraperFnacCollapse">⬇</button>
+      <div class="dinaScraperBestPrice"> {% load static %} <img
+          src="https://electroconseil.fr/wp-content/uploads/2016/02/logo-FNAC-HD.jpg" alt="Logo Fnac"
+          class="dinaScraperLogo" height="60" />
+        <div class="dinaScraperBestProductPrice">
+          <p class="dinaScrapperProductTitle">{{fnac_best.name}}</p>
+          <p class="dinaScrapperProductPrice">{{fnac_best.price}}</p>
+          <input type="checkbox" id="save" name="data" value="{{fnac_best.name}}@{{fnac_best.price}}@{{fnac_best.url}}">
+        </div>
+        <button type="button" class="dinaScraperBestLink">
+          <a href="{{fnac_best.url}}">Voir l'offre</a>
+        </button>
+      </div>
+    </div>
+    <div class="dinaScraperFnacProducts"> {% for product in fnac_products %} <div>
+        <p>
+          <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
+        </p>
+        <input type="checkbox" id="save" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
+      </div> {% endfor %} </div>
+  </div>
+  <div class="dinaScraper">
+    <div class="dinaScraperTab">
+      <button type="button" class="dinaScraperRakutenCollapse">⬇</button>
+      <div class="dinaScraperBestPrice"> {% load static %} <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Logo_rakuten.jpg/1200px-Logo_rakuten.jpg"
+          alt="Logo Rakuten" class="dinaScraperLogo" height="60" />
+        <div class="dinaScraperBestProductPrice">
+          <p class="dinaScrapperProductTitle">{{rakuten_best.name}}</p>
+          <p class="dinaScrapperProductPrice">{{rakuten_best.price}}</p>
+          <input type="checkbox" id="save" name="data"
+            value="{{rakuten_best.name}}@{{rakuten_best.price}}@{{rakuten_best.url}}">
+        </div>
+        <button type="button" class="dinaScraperBestLink">
+          <a href="{{rakuten_best.url}}">Voir l'offre</a>
+        </button>
+      </div>
+    </div>
+    <div class="dinaScraperRakutenProducts"> {% for product in rakuten_products %} <div>
+        <p>
+          <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
+        </p>
+        <input type="checkbox" id="save" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
+      </div> {% endfor %}
     </div>
   </div>
-  <div class="dinaScraperAmazonProducts"> {% for product in amazon_products %} <div>
-      <p>
-        <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
-      </p>
-      <input type="checkbox" id="scales" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
-      
-    </div> {% endfor %} </div>
-</div>
-<div class="dinaScraper">
-  <div class="dinaScraperTab">
-    <button type="button" class="dinaScraperRDCCollapse">⬇</button>
-    <div class="dinaScraperBestPrice"> {% load static %} <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/e/eb/Logo_Rue_du_Commerce_2020.svg/1200px-Logo_Rue_du_Commerce_2020.svg.png" alt="Logo Rue du Commerce" class="dinaScraperLogo" height="60" />
-      <div class="dinaScraperBestProductPrice">
-        <p class="dinaScrapperProductTitle">{{rdc_best.name}}</p>
-        <p class="dinaScrapperProductPrice">{{rdc_best.price}}</p>
-      </div>
-      <button type="button" class="dinaScraperBestLink">
-        <a href="{{rdc_best.url}}">Voir l'offre</a>
-      </button>
-    </div>
-  </div>
-  <div class="dinaScraperRDCProducts"> {% for product in rdc_products %} <div>
-      <p>
-        <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
-      </p>
-      <input type="checkbox" id="scales" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
-      
-    </div> {% endfor %} </div>
-</div>
-<div class="dinaScraper">
-  <div class="dinaScraperTab">
-    <button type="button" class="dinaScraperDartyCollapse">⬇</button>
-    <div class="dinaScraperBestPrice"> {% load static %} <img src="https://blog.mappy.com/wp-content/uploads/2021/11/Darty-logo.png" alt="Logo Darty" class="dinaScraperLogo" height="60" />
-      <div class="dinaScraperBestProductPrice">
-        <p class="dinaScrapperProductTitle">{{darty_best.name}}</p>
-        <p class="dinaScrapperProductPrice">{{darty_best.price}}</p>
-      </div>
-      <button type="button" class="dinaScraperBestLink">
-        <a href="{{darty_best.url}}">Voir l'offre</a>
-      </button>
-    </div>
-  </div>
-  <div class="dinaScraperDartyProducts"> {% for product in darty_products %} <div>
-      <p>
-        <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
-      </p>
-      <input type="checkbox" id="scales" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
-      
-    </div> {% endfor %} </div>
-</div>
-<div class="dinaScraper">
-  <div class="dinaScraperTab">
-    <button type="button" class="dinaScraperFnacCollapse">⬇</button>
-    <div class="dinaScraperBestPrice"> {% load static %} <img src="https://electroconseil.fr/wp-content/uploads/2016/02/logo-FNAC-HD.jpg" alt="Logo Fnac" class="dinaScraperLogo" height="60" />
-      <div class="dinaScraperBestProductPrice">
-        <p class="dinaScrapperProductTitle">{{fnac_best.name}}</p>
-        <p class="dinaScrapperProductPrice">{{fnac_best.price}}</p>
-      </div>
-      <button type="button" class="dinaScraperBestLink">
-        <a href="{{fnac_best.url}}">Voir l'offre</a>
-      </button>
-    </div>
-  </div>
-  <div class="dinaScraperFnacProducts"> {% for product in fnac_products %} <div>
-      <p>
-        <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
-      </p>
-      <input type="checkbox" id="scales" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
-      
-    </div> {% endfor %} </div>
-</div>
-<div class="dinaScraper">
-  <div class="dinaScraperTab">
-    <button type="button" class="dinaScraperRakutenCollapse">⬇</button>
-    <div class="dinaScraperBestPrice"> {% load static %} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Logo_rakuten.jpg/1200px-Logo_rakuten.jpg" alt="Logo Rakuten" class="dinaScraperLogo" height="60" />
-      <div class="dinaScraperBestProductPrice">
-        <p class="dinaScrapperProductTitle">{{rakuten_best.name}}</p>
-        <p class="dinaScrapperProductPrice">{{rakuten_best.price}}</p>
-      </div>
-      <button type="button" class="dinaScraperBestLink">
-        <a href="{{rakuten_best.url}}">Voir l'offre</a>
-      </button>
-    </div>
-  </div>
-  <div class="dinaScraperRakutenProducts"> {% for product in rakuten_products %} <div>
-      <p>
-        <a href="{{product.url}}" target="_blank">{{product.name}} - {{product.price}}€</a>
-      </p>
-      <input type="checkbox" id="scales" name="data" value="{{product.name}}@{{product.price}}@{{product.url}}">
-      
-    </div> {% endfor %}
-  </div>
-</div>
-<button type="submit">
-  <i class="fa fa-heart" style="font-size:12px;color:rgb(104, 39, 255)"></i>
-</button>
+  <button class="dinaHeart" type="submit">
+    <i class="fa fa-heart" style="font-size:12px;color:white"></i>
+  </button>
+
 </form>

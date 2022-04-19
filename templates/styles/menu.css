@@ -130,3 +130,7 @@
   height: 25vh;
   width: 110vw;
 }
+
+.dinaScraperStat {
+  display : block;
+}

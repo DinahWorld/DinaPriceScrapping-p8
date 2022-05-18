@@ -38,7 +38,7 @@ def search_products(request,search_product):
 def render_page(request):
     saved_products_name = get_saved_products()
     return render(request, "home.html",{
-        "saved_products": saved_products_name[0],
+        "saved_products": saved_products_name,
     })
 
 def home(request):

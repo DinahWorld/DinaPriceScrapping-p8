@@ -17,7 +17,8 @@ def search_products(request,search_product):
         fnac_products,
         rakuten_products,
     ) = get_products(search_product)
-    
+    saved_products_name = get_saved_products()
+
     return render(
         request,
         "home.html",
@@ -32,6 +33,7 @@ def search_products(request,search_product):
             "fnac_best": objectview(fnac_products[0]),
             "rakuten_products": rakuten_products[1],
             "rakuten_best": objectview(rakuten_products[0]),
+            "saved_products": saved_products_name,
         },   
     )
 
